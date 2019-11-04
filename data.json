@@ -1,0 +1,45 @@
+{
+  "products": [
+    {
+      "title": "iPhone 7 32Gb",
+      "colors": [
+        "Black",
+        "Gold",
+        "Red"
+      ],
+      "price": "350",
+      "quantity": 12,
+      "id": 1
+    },
+    {
+      "title": "iPhone X 64Gb",
+      "colors": [
+        "Red",
+        "Grey"
+      ],
+      "price": "750",
+      "quantity": 9,
+      "id": 2
+    },
+    {
+      "title": "iPhone 5 32Gb",
+      "colors": [
+        "Black",
+        "White"
+      ],
+      "price": 345,
+      "quantity": 3,
+      "id": 4
+    },
+    {
+      "title": "Samsung SIII 16Gb",
+      "colors": [
+        "Black",
+        "White"
+      ],
+      "price": 250,
+      "quantity": 2,
+      "id": 5
+    }
+  ]
+}

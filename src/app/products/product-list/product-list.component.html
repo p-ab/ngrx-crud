@@ -1,0 +1,38 @@
+<div class="col-lg-8 col-md-10 col-sm-12 products-list">
+  <h3>Products</h3>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr class="table-primary">
+          <th scope="col">Title</th>
+          <th scope="col">Colors</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Price</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="4" class="alert alert-danger" *ngIf="error$ | async as error">
+            {{error}}
+          </td>
+        </tr>
+        <tr *ngFor="let product of (products$ | async)">
+          <th scope="row">{{product.title}}</th>
+          <td>
+            <span *ngFor="let color of product.colors" 
+              class="break-comma">{{color | titlecase }}</span>
+          </td>
+          <td>{{product.quantity}}</td>
+          <td>{{product.price | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+          <th class="controls">
+            <i (click)="editProduct(product)" class="fa fa-pencil" 
+              aria-hidden="true" title="Edit Product"></i> 
+            <i (click)="deleteProduct(product)" class="fa fa-trash" 
+              aria-hidden="true" title="Delete Product"></i>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

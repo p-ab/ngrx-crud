@@ -1,0 +1,28 @@
+.products-list {
+  padding: 0;
+
+  .break-comma + .break-comma {
+    &:before {
+      content: ', ';
+    }
+  }
+}
+.controls {
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.6rem;
+  i {
+    cursor: pointer;
+
+    &:hover {
+      color: #3987c9;
+      transition: .3s;
+    }
+  }
+  i + i {
+    margin-left: 10px;
+  }
+  .fa-trash {
+    color: lighten(maroon, 15%);
+  }
+}

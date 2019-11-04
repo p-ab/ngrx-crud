@@ -1,0 +1,81 @@
+<div [style.visibility]="isEditing ? 'visible' : 'hidden'">
+  <h3>Edit Product</h3>
+  <div *ngIf="isEditingSuccess" class="alert alert-success alert-dismissible fade show" 
+    role="alert">
+    <strong>Product was successfully updated!</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div *ngIf="title.invalid && (title.dirty || title.touched)"
+      class="alert alert-danger">
+    <div *ngIf="title.errors.required">
+      Title is required.
+    </div>
+    <div *ngIf="title.errors.minlength">
+      Title must be at least 5 characters long.
+    </div>
+    <div *ngIf="title.errors.maxlength">
+      Too long title.
+    </div>
+  </div>
+  <div *ngIf="price.invalid && (price.dirty || price.touched)"
+      class="alert alert-danger">
+    <div *ngIf="price.errors.required">
+      Price is required.
+    </div>
+  </div>
+  <div *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)"
+      class="alert alert-danger">
+    <div *ngIf="quantity.errors.required">
+      Quantity is required.
+    </div>
+  </div>
+  <div *ngIf="isEditingFail" class="alert alert-danger">
+    Please fill in the form below!
+  </div>
+
+  <form [formGroup]="productForm" (submit)="updateProduct()" class="form-inline mb-4">
+    <label for="Title" class="sr-only">Title</label>
+    <div class="input-group mb-2 mr-sm-2">
+      <input type="text" class="form-control" formControlName="title" placeholder="Title">
+    </div>
+
+    <label for="Price" class="sr-only">Price</label>
+    <div class="input-group mb-2 mr-sm-2">
+      <input type="text" class="form-control" formControlName="price" placeholder="Price"
+       currencyMask >
+    </div>
+
+    <label for="Quantity" class="sr-only">Quantity</label>
+    <div class="input-group mb-2 mr-sm-2">
+      <input type="number" min="0" max="16000" class="form-control" 
+        formControlName="quantity" placeholder="Quantity">
+    </div>
+
+    <label for="Color" class="sr-only">Color</label>
+    <div class="input-group mb-2 mr-sm-2">
+      <select class="selectpicker" multiple formControlName="colors"
+        data-live-search="true">
+        <option value="Black" 
+          data-content="
+          <i class='fa fa-circle' style='color: black'></i> Black"></option>
+        <option value="White" 
+          data-content="
+          <i class='fa fa-circle' style='color: #f2f2f2'></i> White"></option>
+        <option value="Gold"
+          data-content="
+          <i class='fa fa-circle' style='color: gold'></i> Gold"></option>
+        <option value="Red"
+          data-content="
+          <i class='fa fa-circle' style='color: maroon'></i> Red"></option>
+        <option value="Grey"
+          data-content="
+          <i class='fa fa-circle' style='color: grey'></i> Grey"></option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary mb-2">Save</button>
+  </form>
+</div>
