@@ -1,4 +1,4 @@
-<div [style.visibility]="isEditing ? 'visible' : 'hidden'">
+<div [style.visibility]="(isEditing$ | async) ? 'visible' : 'hidden'">
   <h3>Edit Product</h3>
   <div *ngIf="isEditingSuccess" class="alert alert-success alert-dismissible fade show" 
     role="alert">

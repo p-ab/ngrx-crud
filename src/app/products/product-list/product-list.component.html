@@ -12,6 +12,14 @@
         </tr>
       </thead>
       <tbody>
+        <tr *ngIf="!(loaded$ | async)">
+          <td colspan="4" style="text-align:center">
+            <div class="progress products-loading">
+              <div class="progress-bar bg-info" role="progressbar" 
+                aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </td>
+        </tr>
         <tr>
           <td colspan="4" class="alert alert-danger" *ngIf="error$ | async as error">
             {{error}}

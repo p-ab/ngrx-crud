@@ -17,7 +17,7 @@ declare const $: any;
 })
 export class ProductEditComponent implements OnInit, OnDestroy {
   productForm: FormGroup;
-  isEditing = false;
+  isEditing$: Observable<boolean> 
   isEditingSuccess = false;
   isEditingFail = false;
 
@@ -42,22 +42,15 @@ export class ProductEditComponent implements OnInit, OnDestroy {
       id: null
     })
 
-    const isEditing$: Observable<boolean> = this._store.select(
-      fromProduct.checkEditMode
-    )
+    this.isEditing$ = this._store.select(fromProduct.checkEditMode)
 
     const product$: Observable<Product> = this._store.select(
       fromProduct.getCurrentProduct
     )
 
     this._subscriptions.add(
-      isEditing$.subscribe(isEditing => this.isEditing = isEditing)
-    )
-
-    this._subscriptions.add(
       product$.subscribe(currentProduct => {
         if (currentProduct) {
-          this.isEditing = true;
           this.productForm.patchValue({
             title: currentProduct.title,
             colors: currentProduct.colors,
