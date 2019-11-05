@@ -4,7 +4,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 
 import { Observable, of } from 'rxjs';
-import { map, mergeMap, catchError } from 'rxjs/operators';
+import { map, mergeMap, delay, catchError } from 'rxjs/operators';
 
 import { ProductService } from '../product.service';
 import * as productActions from './product.actions';
@@ -20,6 +20,7 @@ export class ProductEffect {
 
 	@Effect()
 	loadProducts$: Observable<Action> = this._actions$.pipe(
+		delay(700),
 		ofType<productActions.LoadProducts>(
 				productActions.ProductActionTypes.LOAD_PRODUCTS
 			),

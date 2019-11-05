@@ -16,10 +16,12 @@ import { Product } from '../product.model';
 export class ProductListComponent implements OnInit {
   products$: Observable<Product[]>;
   error$: Observable<String>;
+  loaded$: Observable<boolean>;
 
   constructor(private _store: Store<fromProduct.AppState>) { }
 
   ngOnInit() {
+    this.loaded$ = this._store.select(fromProduct.getProductsLoaded)
   	this._store.dispatch(new productActions.LoadProducts())
   	this.products$ = this._store.pipe(select(fromProduct.getProducts))
     this.error$ = this._store.pipe(select(fromProduct.getError));
@@ -27,6 +29,7 @@ export class ProductListComponent implements OnInit {
 
   deleteProduct(product: Product) {
     if (confirm("Are You Sure You want to Delete this Product?")) {
+      this._store.dispatch(new productActions.DisableEditMode());
       this._store.dispatch(new productActions.DeleteProduct(product.id));
     }
   }

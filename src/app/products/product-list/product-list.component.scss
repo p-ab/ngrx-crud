@@ -26,3 +26,21 @@
     color: lighten(maroon, 15%);
   }
 }
+.products-loading {
+  width: 50%;
+  transform: translateX(20%);
+  animation: 1.3s productsPreloading ease-in infinite;
+  background: #17a2b8;
+}
+
+@keyframes productsPreloading {
+  0% {
+    transform: translateX(20%) scaleX(.8);
+  }
+  50% {
+    transform: translateX(90%) scaleX(1);
+  }
+  100% {
+    transform: translateX(20%) scaleX(.8);
+  }
+}

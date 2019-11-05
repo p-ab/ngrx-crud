@@ -99,22 +99,22 @@ export function productReducer(
 			};
 		}
 
-    case productActions.ProductActionTypes.ENABLE_EDIT_MODE: {
-      return {
-        ...state,
-        editModeEnabled: true
-      };
-    }
-    case productActions.ProductActionTypes.DISABLE_EDIT_MODE: {
-      return {
-        ...state,
-        editModeEnabled: false
-      };
-    }
-		default: {
-			return state;
+	    case productActions.ProductActionTypes.ENABLE_EDIT_MODE: {
+	      return {
+	        ...state,
+	        editModeEnabled: true
+	      };
+	    }
+	    case productActions.ProductActionTypes.DISABLE_EDIT_MODE: {
+	      return {
+	        ...state,
+	        editModeEnabled: false
+	      };
+	    }
+			default: {
+				return state;
+			}
 		}
-	}
 }
 
 const getProductFeatureState = createFeatureSelector<ProductState>("products")
