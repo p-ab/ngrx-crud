@@ -29,7 +29,7 @@
     "bootstrap-select": "^1.13.12",
     "concurrently": "^5.0.0",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "json-server": "^0.15.1",
     "ngx-currency": "^2.0.0",
     "popper.js": "^1.16.0",
